@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="A respectful note from a student developer in Kashmir about misunderstanding and enforcement of technology-related laws and its impact on learning and growth.">
+  <meta name="robots" content="index, follow">
+
+  <title>Technology & VPN Fear in Kashmir | A Student Developer's Perspective</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Technology & VPN Fear in Kashmir — A Student's Perspective" />
+  <meta property="og:description" content="A clear, respectful note explaining how misunderstanding of modern tech tools affects students and developers in Kashmir." />
+  <meta property="og:type" content="article" />
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="overlay" id="overlay"></div>
+
+  <header>
+    <div class="header-content">
+      <h1>A Note from Kashmir on Technology, Fear, and Unclear Enforcement</h1>
+      <p class="subtitle">
+        A first-hand account from a student developer explaining how misunderstanding of modern
+        technology tools affects learning, growth, and confidence in Kashmir.
+      </p>
+    </div>
+  </header>
+
+    <nav id="nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Articles <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+          <li><a href="india-as-an-elected-dictatorship.html">India as an Elected Dictatorship</a></li>
+          <li><a href="vpn-ban-in-kashmir.html">Technology &amp; VPN Fear in Kashmir</a></li>
+        </ul>
+            </li>
+        </ul>
+    </nav>
+
+  <div class="jump-link">
+    <a href="#faq">Jump to FAQ ↓</a>
+  </div>
+
+  <main class="container">
+    <section class="card" id="introduction">
+      <p>Respectfully, the issue is not whether tools like VPNs are legal or illegal.</p>
+
+      <p>
+        The real issue is <strong>how technology-related laws are perceived and enforced on the ground in Kashmir</strong>,
+        often without technical understanding or contextual judgment.
+      </p>
+
+      <p>
+        In many cases, the word "VPN" alone triggers suspicion. The presence of such tools on a phone or laptop
+        is treated as a red flag even before understanding the purpose behind their use.
+      </p>
+
+      <p>
+        I am a college student and an application developer. For learning and development, I connect my devices
+        to <strong>my own cloud-hosted server on platforms like AWS</strong> using private networking tools such as Tailscale.
+      </p>
+
+      <p>
+        This is not a commercial VPN, not for hiding identity, and not for bypassing the law.
+        It is a <strong>technical necessity</strong> for testing, debugging, and learning modern cloud systems.
+      </p>
+
+      <div class="divider"></div>
+
+      <p>
+        Due to financial limitations, I do not own a high-end computer. Cloud free-tier services allow students
+        like me to learn real-world skills despite hardware constraints.
+      </p>
+
+      <p>
+        Recently, I approached my local police station seeking clarity. I was informed that no permission could
+        be granted and that approval would be required from higher administrative offices.
+      </p>
+
+      <p><strong>
+        Should a student spend time building skills, or running between offices explaining basic technology?
+      </strong></p>
+
+      <div class="divider"></div>
+
+      <p>
+        Over time, repeated fear and uncertainty create an unintended consequence.
+        When students observe how clearly and practically technology laws are applied in other countries,
+        it naturally creates a desire to pursue education and careers elsewhere.
+      </p>
+
+      <p>
+        This is not due to lack of attachment to one's homeland, but a search for
+        <strong>clarity, predictability, and freedom to learn</strong>.
+      </p>
+
+      <p>
+        I ask not for exemptions, but for understanding, awareness, and fairness.
+        Fear does not create security. Clarity creates confidence.
+      </p>
+    </section>
+
+    <section class="card" id="timeline">
+      <h2>Timeline of Events</h2>
+      <ul class="timeline">
+        <li>Use of cloud and private networking tools for academic development</li>
+        <li>Concern raised due to lack of clarity around VPN perception</li>
+        <li>Voluntary visit to local police station for guidance</li>
+        <li>Directed toward higher administrative approval</li>
+        <li>Academic progress impacted due to uncertainty and fear</li>
+      </ul>
+    </section>
+
+    <section class="card faq" id="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          What is a VPN?
+          <span>+</span>
+        </button>
+        <div class="accordion-body">
+          <p>
+            A VPN (Virtual Private Network) is a technology that creates a secure and encrypted
+            connection between devices. VPNs can be used for privacy, security, or connecting
+            to private systems. Like any technology tool, misuse should be punished, not
+            legitimate academic or professional use.
+          </p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          What is Tailscale?
+          <span>+</span>
+        </button>
+        <div class="accordion-body">
+          <p>
+            Tailscale is a private networking tool widely used by developers and organizations
+            to securely connect their own devices and servers. It is commonly used for
+            application development, testing, debugging, and learning modern cloud-based systems.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <a class="btn" href="vpn-ban-in-kashmir.pdf" download>Download PDF</a>
+      <a class="btn" target="_blank" rel="noopener noreferrer"
+         href="https://twitter.com/intent/tweet?text=Read+a+student+developer's+note+on+technology+and+fear+in+Kashmir">
+         Share on X
+      </a>
+    </div>
+
+    <footer>
+      <p>
+        Written by a student developer from <span>Kashmir</span>.
+        Shared in the interest of clarity, learning, and technological growth.
+      </p>
+      <p>Contact: <strong>contact@developerruhban.com</strong></p>
+    </footer>
+  </main>
+
+  <div class="scroll-top" id="scrollTop"></div>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    const overlay = document.getElementById('overlay');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      nav.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      nav.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    // Close menu on link click
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+      });
+    });
+
+    // Scroll to top button
+    const scrollTop = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTop.classList.add('visible');
+      } else {
+        scrollTop.classList.remove('visible');
+      }
+    });
+
+    scrollTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Accordion functionality
+    document.querySelectorAll('.accordion-header').forEach(button => {
+      button.addEventListener('click', () => {
+        const accordion = button.parentElement;
+
+        document.querySelectorAll('.accordion').forEach(item => {
+          if (item !== accordion) {
+            item.classList.remove('active');
+          }
+        });
+
+        accordion.classList.toggle('active');
+      });
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinksArray = Array.from(navLinks);
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinksArray.forEach(link => {
+        link.style.color = '';
+        link.style.borderBottomColor = '';
+        if (link.getAttribute('href') === `#${current}`) {
+          link.style.color = 'var(--accent-light)';
+          link.style.borderBottomColor = 'var(--accent)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

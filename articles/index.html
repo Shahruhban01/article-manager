@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Developer Ruhban - Student developer from Kashmir sharing insights on technology, democracy, and ground realities.">
+    <meta name="robots" content="index, follow">
+
+    <title>Developer Ruhban | Student Developer & Writer from Kashmir</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Developer Ruhban - Student Developer from Kashmir" />
+    <meta property="og:description"
+        content="Exploring technology, democracy, and ground realities through code and writing." />
+    <meta property="og:type" content="website" />
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #151937;
+            --bg-card: #1a1f3a;
+            --text-primary: #e8eaf6;
+            --text-secondary: #9fa8da;
+            --text-muted: #7986cb;
+            --accent-red: #ff1744;
+            --accent-cyan: #00bcd4;
+            --accent-purple: #7c4dff;
+            --border: #283593;
+            --border-light: #3949ab;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 14px;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #0d1128 100%);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background: var(--accent-purple);
+            border-color: var(--accent-purple);
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(21, 25, 55, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            flex-wrap: wrap;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        nav li a {
+            display: block;
+            padding: 1.25rem clamp(0.75rem, 3vw, 2rem);
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            text-decoration: none;
+        }
+
+        nav li a:hover {
+            color: var(--accent-purple);
+            background: rgba(124, 77, 255, 0.1);
+            border-bottom-color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                transition: left 0.3s ease;
+                overflow-y: auto;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 5rem 0 2rem 0;
+            }
+
+            nav li {
+                width: 100%;
+            }
+
+            nav li a {
+                padding: 1.25rem 2rem;
+                border-bottom: 1px solid var(--border);
+                border-left: 3px solid transparent;
+            }
+
+            nav li a:hover {
+                border-left-color: var(--accent-purple);
+                border-bottom-color: transparent;
+            }
+        }
+
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(21, 25, 55, 0.95) 0%, rgba(10, 14, 39, 0.98) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: clamp(4rem, 10vw, 8rem) 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124, 77, 255, 0.15) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.1) rotate(10deg);
+                opacity: 0.8;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 1rem clamp(1.5rem, 4vw, 2.5rem);
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid var(--accent-purple);
+            background: var(--accent-purple);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 77, 255, 0.3);
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(124, 77, 255, 0.5);
+            text-decoration: none;
+        }
+
+        .hero-btn.secondary {
+            background: transparent;
+            color: var(--accent-purple);
+        }
+
+        .hero-btn.secondary:hover {
+            background: rgba(124, 77, 255, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-btn {
+                width: 100%;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: clamp(2rem, 5vw, 4rem) 5%;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .article-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-cyan));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(124, 77, 255, 0.3);
+            border-color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        .article-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .article-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(124, 77, 255, 0.1);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .article-card h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-card p {
+            color: var(--text-secondary);
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .read-more {
+            color: var(--accent-purple);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .article-card:hover .read-more::after {
+            transform: translateX(5px);
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 4rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .about-content strong {
+            color: var(--accent-purple);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            padding: 0.75rem 1.5rem;
+            background: rgba(124, 77, 255, 0.1);
+            border: 1px solid var(--accent-purple);
+            color: var(--accent-purple);
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: clamp(2rem, 5vw, 3rem);
+            background: linear-gradient(135deg, rgba(124, 77, 255, 0.1) 0%, rgba(124, 77, 255, 0.05) 100%);
+            border: 1px solid var(--accent-purple);
+            border-radius: 16px;
+            margin-bottom: 4rem;
+        }
+
+        .contact-section h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            color: var(--text-secondary);
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-purple);
+            background: transparent;
+            color: var(--accent-purple);
+        }
+
+        .contact-btn:hover {
+            background: var(--accent-purple);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(124, 77, 255, 0.4);
+            text-decoration: none;
+        }
+
+        @media (max-width: 640px) {
+            .contact-links {
+                flex-direction: column;
+            }
+
+            .contact-btn {
+                width: 100%;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: clamp(2rem, 5vw, 3rem) 5%;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-purple);
+            border: 2px solid var(--accent-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(124, 77, 255, 0.4);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(124, 77, 255, 0.6);
+        }
+
+        .scroll-top::before {
+            content: '↑';
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- <nav id="nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#articles">Articles</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav> -->
+    <nav id="nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Articles <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+          <li><a href="india-as-an-elected-dictatorship.html">India as an Elected Dictatorship</a></li>
+          <li><a href="vpn-ban-in-kashmir.html">Technology &amp; VPN Fear in Kashmir</a></li>
+        </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Developer Ruhban</h1>
+            <p>
+                Student Developer from Kashmir | Building applications, exploring ideas, and sharing perspectives on
+                technology, democracy, and ground realities.
+            </p>
+            <div class="hero-buttons">
+                <a href="#articles" class="hero-btn">Read Articles</a>
+                <a href="#about" class="hero-btn secondary">About Me</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Articles Section -->
+        <section id="articles" class="fade-in">
+            <div class="section-header">
+                <h2>Articles & Writings</h2>
+                <p>Exploring complex issues through analysis and lived experience</p>
+            </div>
+
+            <div class="articles-grid">
+        <a href="india-as-an-elected-dictatorship.html" class="article-card">
+          <span class="article-tag">Political Analysis</span>
+          <h3>India as an Elected Dictatorship</h3>
+          <p>An analysis of institutional capture and democratic erosion</p>
+          <div class="article-meta">
+            <span>Read more</span>
+          </div>
+        </a>
+
+        <a href="vpn-ban-in-kashmir.html" class="article-card">
+          <span class="article-tag">Technology &amp; Society</span>
+          <h3>Technology &amp; VPN Fear in Kashmir</h3>
+          <p>A student developer&#039;s perspective on tech restrictions</p>
+          <div class="article-meta">
+            <span>Read more</span>
+          </div>
+        </a>
+
+      </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section fade-in">
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p>
+                    I am a <strong>student developer from Kashmir</strong>, currently pursuing my education
+                    while building applications and learning modern cloud technologies.
+                </p>
+                <p>
+                    Due to financial constraints, I rely on cloud free-tier services like AWS to learn and
+                    develop real-world skills. I use tools like Tailscale to connect to my own servers for
+                    testing and debugging—not for bypassing laws, but as a <strong>technical necessity</strong>
+                    for growth.
+                </p>
+                <p>
+                    Through my writing, I aim to share perspectives on the intersection of technology, policy,
+                    and lived experience. I believe in <strong>clarity over fear</strong>, understanding over
+                    suspicion, and dialogue over silence.
+                </p>
+                <p>
+                    My goal is to contribute meaningfully to technology while advocating for fair,
+                    contextual enforcement of laws that affect students and developers.
+                </p>
+
+                <div class="skills">
+                    <span class="skill-tag">Application Development</span>
+                    <span class="skill-tag">Cloud Computing</span>
+                    <span class="skill-tag">Web Technologies</span>
+                    <span class="skill-tag">Critical Writing</span>
+                    <span class="skill-tag">Political Analysis</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section fade-in">
+            <h2>Get in Touch</h2>
+            <p>
+                I'm open to discussions, collaborations, and feedback.
+                Feel free to reach out for inquiries or conversations.
+            </p>
+            <div class="contact-links">
+                <a href="https://developerruhban.com/" target="_blank" rel="noopener noreferrer"
+                    class="contact-btn">Website</a>
+                <a href="mailto:contact@developerruhban.com" class="contact-btn">Email Me</a>
+                <a href="https://twitter.com/shahruhban_01" target="_blank" rel="noopener noreferrer"
+                    class="contact-btn">Twitter</a>
+                <a href="https://github.com/shahruhban01" target="_blank" rel="noopener noreferrer"
+                    class="contact-btn">GitHub</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Developer Ruhban. All views expressed are personal.</p>
+        <p>Built with care from Kashmir 🏔️</p>
+    </footer>
+
+    <div class="scroll-top" id="scrollTop"></div>
+
+    <script src="assets/js/app.js">
+        </body>
+
+</html>

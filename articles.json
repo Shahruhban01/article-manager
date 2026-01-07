@@ -1,0 +1,18 @@
+{
+    "articles": [
+        {
+            "title": "India as an Elected Dictatorship",
+            "slug": "india-as-an-elected-dictatorship",
+            "subtitle": "An analysis of institutional capture and democratic erosion",
+            "tag": "Political Analysis",
+            "created": "2026-01-08 01:23:14"
+        },
+        {
+            "title": "Technology & VPN Fear in Kashmir",
+            "slug": "vpn-ban-in-kashmir",
+            "subtitle": "A student developer's perspective on tech restrictions",
+            "tag": "Technology & Society",
+            "created": "2026-01-08 01:23:14"
+        }
+    ]
+}
