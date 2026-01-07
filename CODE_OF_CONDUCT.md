@@ -30,7 +30,7 @@ This Code of Conduct applies within project spaces and in public spaces when rep
 
 ## Enforcement
 
-Report violations to: **conduct@developerruhban.com**
+Report violations to: **contact@developerruhban.com**
 
 All complaints will be reviewed and investigated promptly and fairly.
 

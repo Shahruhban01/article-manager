@@ -10,7 +10,7 @@
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them via email to: **security@developerruhban.com**
+Instead, please report them via email to: **contact@developerruhban.com**
 
 Include:
 
