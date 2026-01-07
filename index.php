@@ -1,6 +1,17 @@
 <?php
 session_start();
 
+/**
+ * If page=admin is NOT in URL, redirect to articles/
+ */
+if (!isset($_GET['page']) || $_GET['page'] !== 'admin') {
+    header("Location: articles/");
+    exit;
+}
+
+/**
+ * If already logged in, go to admin
+ */
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     header("Location: admin.php");
     exit;
@@ -23,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
