@@ -1,0 +1,61 @@
+# Article Manager - .gitignore
+
+# Generated Articles
+articles/*.html
+!articles/index.html
+
+# Database
+articles.json
+
+# PHP Session Files
+sessions/
+tmp/
+
+# System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor Files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+error_log
+access_log
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Backup Files
+*.backup
+*.bak
+*.old
+*-backup-*
+
+# Composer (if used in future)
+/vendor/
+composer.lock
+
+# Node modules (if used in future)
+node_modules/
+package-lock.json
+
+# Temporary Files
+*.tmp
+*.temp
+
+# Security
+*.pem
+*.key
+*.cert
+config.local.php
+secrets.php
